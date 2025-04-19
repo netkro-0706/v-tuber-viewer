@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import JotaiProvider from "./_provider/JotaiProvider"
+import TopNavigation from "./components/templates/TopNavigation"
 
 export const metadata: Metadata = {
   title: "Nextjs15",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <JotaiProvider>{children}</JotaiProvider>
+        <JotaiProvider>
+          <TopNavigation />
+          {children}
+        </JotaiProvider>
       </body>
     </html>
   )
