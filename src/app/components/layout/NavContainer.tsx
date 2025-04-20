@@ -1,5 +1,5 @@
-import { HasChildren } from "@/app/util/interface"
-import { FC } from "react"
+import { HasChildren } from '@/app/util/interface'
+import { FC } from 'react'
 
 const NavContainder: FC<HasChildren> = ({ children }) => {
   return (

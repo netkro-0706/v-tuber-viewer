@@ -1,14 +1,15 @@
-import NavContainder from "../layout/NavContainer"
-import LinkButton from "../atoms/LinkButton"
-import LinkImage from "../atoms/LinkImage"
+import NavContainder from '../layout/NavContainer'
+import LinkButton from '../atoms/_common/LinkButton'
+import LinkImage from '../atoms/_common/LinkImage'
 
+// navigation
 const TopNavigation = () => {
   return (
     <header className="border-b">
       <NavContainder>
         <div className="mr-[24px]">
           <LinkImage
-            image="/nextjsIcon.png"
+            src="/nextjsIcon.png"
             imgWidth={32}
             imgHeight={32}
             link="/"

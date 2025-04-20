@@ -1,3 +1,5 @@
+import YoutubePreviewTemplate from '@/app/components/templates/YoutubePreviewTemplate'
+
 export default function YoutubeList() {
-  return "This is YoutubeList Page"
+  return <YoutubePreviewTemplate />
 }
