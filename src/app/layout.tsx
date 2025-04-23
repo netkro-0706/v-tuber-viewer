@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import JotaiProvider from './_provider/JotaiProvider'
-import TopNavigation from './components/templates/TopNavigation'
+import TopNavigation from './components/templates/topNavigation'
+import ReactQueryProvider from './_provider/ReactQueryProvider'
 
 export const metadata: Metadata = {
   title: 'Nextjs15',
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <JotaiProvider>
-          <TopNavigation />
-          {children}
-        </JotaiProvider>
+        <ReactQueryProvider>
+          <JotaiProvider>
+            <TopNavigation />
+            {children}
+          </JotaiProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   )

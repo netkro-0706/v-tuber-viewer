@@ -11,11 +11,15 @@
     "format:fix": "prettier --write ."
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.74.4",
+    "axios": "^1.8.4",
     "clsx": "^2.1.1",
     "jotai": "^2.12.3",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
+    "tailwind-scrollbar": "^4.0.2",
+    "tailwind-scrollbar-hide": "^2.0.0",
     "yarn": "^1.22.22"
   },
   "devDependencies": {
