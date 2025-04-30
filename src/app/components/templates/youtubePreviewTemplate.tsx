@@ -1,21 +1,21 @@
-import ReactQuerySSRProvieder from '@/app/_provider/ReactQuerySSRProvieder'
-import BasicContainder from '../layout/BasicContainer'
-import YoutubePlayList from '../molecules/youtubePreview/youtubePlayList'
+import ReactQuerySSRProvider from '@/app/providers/ReactQuerySSRProvider'
+import BasicContainer from '../layout/BasicContainer'
+import YoutubePlayList from '../molecules/youtubePreview/YoutubePlayList'
 import { GetQueryData } from '@/app/lib/getQueryData'
 
 const YoutubePreviewTemplate = async () => {
   const youtubeDataState = await GetQueryData()
 
   return (
-    <BasicContainder>
+    <BasicContainer>
       <div className="w-full pl-3 pr-3">
         <p>This is YoutubeList Page</p>
 
-        <ReactQuerySSRProvieder dehydratedState={youtubeDataState}>
+        <ReactQuerySSRProvider dehydratedState={youtubeDataState}>
           <YoutubePlayList />
-        </ReactQuerySSRProvieder>
+        </ReactQuerySSRProvider>
       </div>
-    </BasicContainder>
+    </BasicContainer>
   )
 }
 

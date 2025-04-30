@@ -1,12 +1,12 @@
-import NavContainder from '../layout/NavContainer'
 import LinkButton from '../atoms/_common/LinkButton'
 import LinkImage from '../atoms/_common/LinkImage'
+import NavContainer from '../layout/NavContainer'
 
 // navigation
 const TopNavigation = () => {
   return (
     <header className="border-b">
-      <NavContainder>
+      <NavContainer>
         <div className="mr-[24px]">
           <LinkImage
             src="/nextjsIcon.png"
@@ -20,7 +20,7 @@ const TopNavigation = () => {
           <LinkButton link="/" text="▶test1" />
           <LinkButton link="/" text="▶test2" />
         </nav>
-      </NavContainder>
+      </NavContainer>
     </header>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { HasChildren } from '../util/interface'
+import { HasChildren } from '../utils/interface'
 import { useState } from 'react'
 
 export default function ReactQueryProvider({ children }: HasChildren) {
