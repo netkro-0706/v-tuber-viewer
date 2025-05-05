@@ -1,6 +1,6 @@
 import ReactQuerySSRProvider from '@/app/providers/ReactQuerySSRProvider'
 import BasicContainer from '../layout/BasicContainer'
-import YoutubePlayList from '../molecules/youtubePreview/YoutubePlayList'
+import YoutubePlayList from '../organisms/youtubePreview/YoutubePlayList'
 import { GetQueryData } from '@/app/lib/getQueryData'
 
 const YoutubePreviewTemplate = async () => {
