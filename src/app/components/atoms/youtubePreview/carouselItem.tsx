@@ -1,15 +1,28 @@
 'use client'
 
+import { useSetAtom } from 'jotai'
 import ButtonImage from '../_common/ButtonImage'
+import videoAtom from '@/app/store/videoAtom'
+import { YoutubeItem } from '@/app/types/youtubeTypes'
 
 interface Props {
-  imageSrc: string
+  data: YoutubeItem
 }
 
+// Carousel에서 image를 표시하는 Item
 // CarouselでImageを表示するItem
-const CarouselItem = ({ imageSrc }: Props) => {
+const CarouselItem = ({ data }: Props) => {
+  const setVideoId = useSetAtom(videoAtom)
+  const video = data.snippet
+
   const OnClickMovie = () => {
-    console.log('clicked')
+    setVideoId({
+      title: video.title,
+      videoId: video.resourceId.videoId,
+      videoOwnerTitle: video.videoOwnerChannelTitle,
+      videoPublishDate: video.publishedAt,
+    })
+    console.log('clicked and videoId', video.resourceId.videoId)
   }
 
   return (
@@ -18,7 +31,7 @@ const CarouselItem = ({ imageSrc }: Props) => {
         <div className="innerBorder relative w-full h-full border-[6px] border-black rounded-[12px] bg-black">
           <ButtonImage
             className="rounded-[6px]"
-            src={imageSrc}
+            src={video.thumbnails.medium.url}
             isFill={true}
             sizes={'320'}
             onClick={OnClickMovie}
