@@ -1,9 +1,15 @@
-"use client"
+'use client'
 
-import Link from "next/link"
+import Link from 'next/link'
 
 interface Props {
+  /**
+   * 表示するText
+   */
   text: string
+  /**
+   * link href
+   */
   link: string
 }
 

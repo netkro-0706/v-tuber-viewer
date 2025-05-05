@@ -1,11 +1,12 @@
-import type { Metadata } from "next"
-import "./globals.css"
-import JotaiProvider from "./_provider/JotaiProvider"
-import TopNavigation from "./components/templates/TopNavigation"
+import type { Metadata } from 'next'
+import './globals.css'
+import JotaiProvider from './providers/JotaiProvider'
+import TopNavigation from './components/templates/TopNavigation'
+import ReactQueryProvider from './providers/ReactQueryProvider'
 
 export const metadata: Metadata = {
-  title: "Nextjs15",
-  description: "Study Nextj15 App",
+  title: 'Nextjs15',
+  description: 'Study Nextj15 App',
 }
 
 export default function RootLayout({
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <JotaiProvider>
-          <TopNavigation />
-          {children}
-        </JotaiProvider>
+        <ReactQueryProvider>
+          <JotaiProvider>
+            <TopNavigation />
+            {children}
+          </JotaiProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   )
