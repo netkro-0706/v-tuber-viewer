@@ -9,8 +9,6 @@ const YoutubePreviewTemplate = async () => {
   return (
     <BasicContainer>
       <div className="w-full pl-3 pr-3">
-        <p>This is YoutubeList Page</p>
-
         <ReactQuerySSRProvider dehydratedState={youtubeDataState}>
           <YoutubePlayList />
         </ReactQuerySSRProvider>
