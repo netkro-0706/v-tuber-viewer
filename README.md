@@ -1,7 +1,7 @@
 ### 特定 Youtube チャンネルを Preview できる App
 
 ### Deployment
-https://v-tuber-viewer-4zjy9r240-netkro-0706s-projects.vercel.app/
+https://v-tuber-viewer.vercel.app/
 
 ### 採用技術
 
