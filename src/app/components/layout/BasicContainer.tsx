@@ -1,4 +1,4 @@
-import { HasChildren } from '@/app/util/interface'
+import { HasChildren } from '@/app/utils/interface'
 import { FC } from 'react'
 
 const BasicContainder: FC<HasChildren> = ({ children }) => {
