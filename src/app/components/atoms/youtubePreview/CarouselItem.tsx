@@ -1,7 +1,7 @@
 'use client'
 
 import { useSetAtom } from 'jotai'
-import ButtonImage from '../_common/ButtonImage'
+import ButtonImage from '../../atoms/_common/ButtonImage'
 import videoAtom from '@/app/store/videoAtom'
 import { YoutubeItem } from '@/app/types/youtubeTypes'
 
