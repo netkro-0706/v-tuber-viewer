@@ -22,7 +22,6 @@ const CarouselItem = ({ data }: Props) => {
       videoOwnerTitle: video.videoOwnerChannelTitle,
       videoPublishDate: video.publishedAt,
     })
-    console.log('clicked and videoId', video.resourceId.videoId)
   }
 
   return (
@@ -30,7 +29,7 @@ const CarouselItem = ({ data }: Props) => {
       <div className="outerBorder w-full h-full border-4 border-yellow-300 bg-yellow-300 rounded-[16px]">
         <div className="innerBorder relative w-full h-full border-[6px] border-black rounded-[12px] bg-black">
           <ButtonImage
-            className="rounded-[6px]"
+            className="rounded-[6px] pointer-events-none"
             src={video.thumbnails.medium.url}
             isFill={true}
             sizes={'320'}
