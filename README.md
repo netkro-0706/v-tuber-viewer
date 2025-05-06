@@ -1,5 +1,8 @@
 ### 特定 Youtube チャンネルを Preview できる App
 
+### Product
+https://v-tuber-viewer-4zjy9r240-netkro-0706s-projects.vercel.app/
+
 ### 採用技術
 
 Nextjs15</br>
