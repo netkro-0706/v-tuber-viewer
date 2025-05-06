@@ -14,6 +14,15 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-40%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 10s linear infinite',
+      },
     },
   },
   plugins: [scrollbar, scrollbarHide],
