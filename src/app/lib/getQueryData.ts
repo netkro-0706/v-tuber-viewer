@@ -1,12 +1,20 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { fetchInfinitePlayList } from '../api/getYoutubePlayList'
+import MOVIELISTID from '../constants/movieList'
 
-export async function GetQueryData() {
+const initList = MOVIELISTID.ALLMUSIC
+
+interface Props {
+  playListId?: string
+}
+
+export async function GetQueryData({ playListId = initList }: Props = {}) {
   const queryClient = new QueryClient()
 
   await queryClient.prefetchInfiniteQuery({
-    queryKey: ['youtube-playlist'],
-    queryFn: fetchInfinitePlayList,
+    queryKey: ['youtube-playlist', playListId],
+    queryFn: ({ pageParam = '' }) =>
+      fetchInfinitePlayList({ playlistId: playListId, pageParam }),
     initialPageParam: '',
   })
 

@@ -4,17 +4,28 @@ import { useEffect, useRef, useState } from 'react'
 import CarouselItem from '../../atoms/youtubePreview/CarouselItem'
 import CarouselLoading from '../../atoms/youtubePreview/CarouselLoading'
 import { useInfinitePlaylist } from '@/app/api/getYoutubePlayList'
-import { useSetAtom } from 'jotai'
+import { useAtomValue, useSetAtom } from 'jotai'
 import videoAtom from '@/app/store/videoAtom'
 import CarouselArrow from '../../atoms/youtubePreview/CarouselArrow'
+import movieListIdAtom from '@/app/store/movieListIdAtom'
 
 // Carousel을 나열하는 Box
 // Carouselを羅列するBox
 const CarouselBox = () => {
+  const movieListId = useAtomValue(movieListIdAtom)
+
   // 데이터 취득infiniteQuery
   // データ取得のinfiniteQuery
-  const { data, isLoading, fetchNextPage, isFetching, hasNextPage, error } =
-    useInfinitePlaylist()
+  const {
+    data,
+    isLoading,
+    refetch,
+    fetchNextPage,
+    isFetching,
+    hasNextPage,
+    error,
+    isStale,
+  } = useInfinitePlaylist(movieListId)
 
   const ref = useRef<HTMLDivElement>(null)
   const [isReadyFetch, setIsReadyFetch] = useState(false)
@@ -55,14 +66,15 @@ const CarouselBox = () => {
       // 오른쪽 끝에 도달하면 fetch실행
       // 右端に到達したらfetchを実行
       const isAtEnd = Math.abs(scrollWidth - scrollRight) < 10
-      setIsReadyFetch(isAtEnd)
+
+      if (isStale) setIsReadyFetch(isAtEnd)
     }
 
     if (!isLoading && !isFetching && data) {
       scrollContainer.addEventListener('scroll', handleScroll)
       return () => scrollContainer.removeEventListener('scroll', handleScroll)
     }
-  }, [ref, isLoading, isFetching, data])
+  }, [ref, isLoading, isFetching, data, isStale])
 
   // mouse down
   const dragMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -85,6 +97,20 @@ const CarouselBox = () => {
     setIsClicked(false)
   }
 
+  // if change movieList
+  useEffect(() => {
+    if (isFetching) return
+
+    refetch()
+    if (data)
+      setVideoId({
+        title: data.pages[0].items[0].snippet.title,
+        videoId: data.pages[0].items[0].snippet.resourceId.videoId,
+        videoOwnerTitle: data.pages[0].items[0].snippet.channelTitle,
+        videoPublishDate: data.pages[0].items[0].snippet.publishedAt,
+      })
+  }, [movieListId, data, setVideoId, refetch])
+
   // 초회 렌더링시 player의 데이터 세팅
   // 初回レンダリング時playerのデータをセッティング
   useEffect(() => {
@@ -102,7 +128,7 @@ const CarouselBox = () => {
   }, [data])
 
   if (error) {
-    alert('error get youtube')
+    console.log('error get youtube', error.message)
   }
 
   // Carousel Move Left

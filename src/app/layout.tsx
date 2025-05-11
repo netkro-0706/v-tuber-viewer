@@ -3,6 +3,7 @@ import './globals.css'
 import JotaiProvider from './providers/JotaiProvider'
 import TopNavigation from './components/templates/TopNavigation'
 import ReactQueryProvider from './providers/ReactQueryProvider'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 export const metadata: Metadata = {
   title: 'Nextjs15',
@@ -21,6 +22,7 @@ export default function RootLayout({
           <JotaiProvider>
             <TopNavigation />
             {children}
+            <ReactQueryDevtools initialIsOpen={false} />
           </JotaiProvider>
         </ReactQueryProvider>
       </body>

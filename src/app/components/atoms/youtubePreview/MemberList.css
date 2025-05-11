@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .select-list {
+    @apply flex items-center justify-center text-center h-full p-2;
+  }
+}
