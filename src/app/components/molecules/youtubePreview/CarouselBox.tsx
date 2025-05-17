@@ -65,7 +65,7 @@ const CarouselBox = () => {
 
       // 오른쪽 끝에 도달하면 fetch실행
       // 右端に到達したらfetchを実行
-      const isAtEnd = Math.abs(scrollWidth - scrollRight) < 10
+      const isAtEnd = Math.abs(scrollWidth - scrollRight) < 20
 
       if (isStale) setIsReadyFetch(isAtEnd)
     }
@@ -100,21 +100,9 @@ const CarouselBox = () => {
   // if change movieList
   useEffect(() => {
     if (isFetching) return
-
-    refetch()
-    if (data)
-      setVideoId({
-        title: data.pages[0].items[0].snippet.title,
-        videoId: data.pages[0].items[0].snippet.resourceId.videoId,
-        videoOwnerTitle: data.pages[0].items[0].snippet.channelTitle,
-        videoPublishDate: data.pages[0].items[0].snippet.publishedAt,
-      })
-  }, [movieListId, data, setVideoId, refetch])
-
-  // 초회 렌더링시 player의 데이터 세팅
-  // 初回レンダリング時playerのデータをセッティング
-  useEffect(() => {
     if (!isFirstRender) return
+
+    if (hasNextPage) refetch()
 
     if (data) {
       setVideoId({
@@ -125,7 +113,19 @@ const CarouselBox = () => {
       })
       setIsFirstRender(false)
     }
-  }, [data])
+  }, [
+    movieListId,
+    data,
+    setVideoId,
+    refetch,
+    isFetching,
+    isFirstRender,
+    hasNextPage,
+  ])
+
+  useEffect(() => {
+    setIsFirstRender(true)
+  }, [movieListId])
 
   if (error) {
     console.log('error get youtube', error.message)
@@ -174,9 +174,11 @@ const CarouselBox = () => {
             >
               {data &&
                 data.pages.map((page) =>
-                  page.items.map((item) => (
-                    <CarouselItem key={item.id} data={item} />
-                  )),
+                  page.items
+                    .filter((item) => {
+                      return item.snippet.title !== 'Private video'
+                    })
+                    .map((item) => <CarouselItem key={item.id} data={item} />),
                 )}
             </div>
             <CarouselArrow direction="left" onClick={handleLeftClick} />
