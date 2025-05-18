@@ -6,8 +6,8 @@ import ReactQueryProvider from './providers/ReactQueryProvider'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 export const metadata: Metadata = {
-  title: 'Nextjs15',
-  description: 'Study Nextj15 App',
+  title: 'v-tuber',
+  description: 'introduce v-tuber and youtube previewer',
 }
 
 export default function RootLayout({
