@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div>Hello</div>
+  return <div>welcome to v-tuber viewer</div>
 }
