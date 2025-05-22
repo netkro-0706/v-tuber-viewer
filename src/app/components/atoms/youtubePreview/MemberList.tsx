@@ -186,14 +186,14 @@ const MemberList = () => {
           <div className="select-list">
             <button
               className="cursor-pointer hover:underline"
-              onClick={() => onChangeMovieList(MOVIELISTID.VICHAN)}
+              onClick={() => onChangeMovieList(MOVIELISTID.VIICHAN)}
             >
               <Image
-                src={`/vichan.png`}
+                src={`/viichan.png`}
                 className="w-[100px] h-auto"
                 width={100}
                 height={100}
-                alt="vichan"
+                alt="viichan"
               />
               <span>비챤</span>
             </button>
