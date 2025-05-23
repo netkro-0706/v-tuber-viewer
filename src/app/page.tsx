@@ -1,3 +1,5 @@
+import HomePage from './(pages)/page'
+
 export default function Home() {
-  return <div>welcome to v-tuber viewer</div>
+  return <HomePage />
 }
