@@ -1,22 +1,22 @@
 'use Client'
 
-import { useSetAtom } from 'jotai'
 import './MemberList.css'
-import movieListIdAtom from '@/app/store/movieListIdAtom'
 import MOVIELISTID from '@/app/constants/movieList'
 import Image from 'next/image'
 import { useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const MemberList = () => {
-  const setMovieListId = useSetAtom(movieListIdAtom)
+  const router = useRouter()
   const [isCloseWak, setIsCloseWak] = useState(true)
   const [isCloseIsedol, setIsCloseIsedol] = useState(true)
+
   const wakRef = useRef(null)
   const isedolRef = useRef(null)
 
   // select list
   const onChangeMovieList = (id: string) => {
-    setMovieListId(id)
+    router.push(`/youtubePreview?movieListId=${id}`)
   }
 
   // open/close wak box
@@ -186,14 +186,14 @@ const MemberList = () => {
           <div className="select-list">
             <button
               className="cursor-pointer hover:underline"
-              onClick={() => onChangeMovieList(MOVIELISTID.VICHAN)}
+              onClick={() => onChangeMovieList(MOVIELISTID.VIICHAN)}
             >
               <Image
-                src={`/vichan.png`}
+                src={`/viichan.png`}
                 className="w-[100px] h-auto"
                 width={100}
                 height={100}
-                alt="vichan"
+                alt="viichan"
               />
               <span>비챤</span>
             </button>

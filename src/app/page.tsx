@@ -1,3 +1,5 @@
+import HomeTemplate from './components/templates/HomeTemplate'
+
 export default function Home() {
-  return <div>welcome to v-tuber viewer</div>
+  return <HomeTemplate />
 }

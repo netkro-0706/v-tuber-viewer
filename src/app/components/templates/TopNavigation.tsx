@@ -1,3 +1,4 @@
+import MOVIELISTID from '@/app/constants/movieList'
 import LinkButton from '../atoms/_common/LinkButton'
 import LinkImage from '../atoms/_common/LinkImage'
 import NavContainer from '../layout/NavContainer'
@@ -16,7 +17,10 @@ const TopNavigation = () => {
           />
         </div>
         <nav className="grid grid-flow-col auto-cols-max gap-4">
-          <LinkButton link="/youtubePreview" text="▶Youtube" />
+          <LinkButton
+            link={`/youtubePreview/?movieListId=${MOVIELISTID.ALLMUSIC}`}
+            text="▶Youtube"
+          />
           <LinkButton link="/" text="▶test1" />
           <LinkButton link="/" text="▶test2" />
         </nav>

@@ -4,15 +4,16 @@ import { useEffect, useRef, useState } from 'react'
 import CarouselItem from '../../atoms/youtubePreview/CarouselItem'
 import CarouselLoading from '../../atoms/youtubePreview/CarouselLoading'
 import { useInfinitePlaylist } from '@/app/api/getYoutubePlayList'
-import { useAtomValue, useSetAtom } from 'jotai'
+import { useSetAtom } from 'jotai'
 import videoAtom from '@/app/store/videoAtom'
 import CarouselArrow from '../../atoms/youtubePreview/CarouselArrow'
-import movieListIdAtom from '@/app/store/movieListIdAtom'
+import { useSearchParams } from 'next/navigation'
 
 // Carousel을 나열하는 Box
 // Carouselを羅列するBox
 const CarouselBox = () => {
-  const movieListId = useAtomValue(movieListIdAtom)
+  const searchParams = useSearchParams()
+  const movieListId = searchParams.get('movieListId') as string
 
   // 데이터 취득infiniteQuery
   // データ取得のinfiniteQuery
